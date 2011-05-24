@@ -16,10 +16,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'theme_afterburner', language 'en', branch 'MOODLE_20_STABLE'
+ * Strings for component 'theme_afterburner', language 'en'
  *
  * @package   theme_afterburner
- * @copyright 1999 onwards Martin Dougiamas  {@link http://moodle.com}
+ * @copyright 2011
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

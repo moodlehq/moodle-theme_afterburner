@@ -2,7 +2,6 @@
 
 class theme_afterburner_core_renderer extends core_renderer {
 
-
     /**
      * Renders a custom menu object (located in outputcomponents.php)
      *
@@ -14,27 +13,21 @@ class theme_afterburner_core_renderer extends core_renderer {
      */
     protected function render_custom_menu(custom_menu $menu) {
 
-        if (isloggedin()) {
-            $branchlabel = get_string('logout');
-            $branchurl   = new moodle_url('/login/logout.php');
-            $branchtitle = $branchlabel;
-            $branchsort  = -1;
-
-            $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
-        }else{
-            $branchlabel = get_string('login');
-            $branchurl   = new moodle_url('/login/index.php');
-            $branchtitle = $branchlabel;
-            $branchsort  = -1;
-
-        $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
-
-    }
-
         // If the menu has no children return an empty string
         if (!$menu->has_children()) {
             return '';
         }
+
+        // Add a login or logout link
+        if (isloggedin()) {
+            $branchlabel = get_string('logout');
+            $branchurl   = new moodle_url('/login/logout.php');
+        } else {
+            $branchlabel = get_string('login');
+            $branchurl   = new moodle_url('/login/index.php');
+        }
+        $branch = $menu->add($branchlabel, $branchurl, $branchlabel, -1);
+
         // Initialise this custom menu
         $content = html_writer::start_tag('ul', array('class'=>'dropdown dropdown-horizontal'));
         // Render each child
@@ -94,7 +87,12 @@ class theme_afterburner_core_renderer extends core_renderer {
         return $content;
     }
 
-    // Copied from core_renderer with one minor change - changed $this->output->render() call to $this->render()
+    /**
+     * Copied from core_renderer with one minor change - changed $this->output->render() call to $this->render()
+     *
+     * @param navigation_node $item
+     * @return string
+     */
     protected function render_navigation_node(navigation_node $item) {
         $content = $item->get_content();
         $title = $item->get_title();
@@ -139,5 +137,3 @@ class theme_afterburner_core_renderer extends core_renderer {
     }
 
 }
-
-?>

@@ -6,7 +6,7 @@ $THEME->parents = array('base');
 
 $THEME->sheets = array(
     'afterburner_layout',   /** Must come first: Page layout **/
-    'afterburner_styles',      /** Must come second: default styles **/
+    'afterburner_styles',   /** Must come second: default styles **/
     'afterburner_menu',
     'afterburner_blocks',
     'afterburner_mod',
@@ -16,10 +16,10 @@ $THEME->sheets = array(
 );
 
 $THEME->parents_exclude_sheets = array(
-  'base'=>array(
-    'pagelayout',
-    'dock'
-  ),
+    'base'=>array(
+        'pagelayout',
+        'dock'
+    ),
 );
 $THEME->editor_sheets = array('editor');
 
@@ -99,8 +99,7 @@ $THEME->layouts = array(
     // Embedded pages, like iframe/object embeded in moodleform - it needs as much space as possible
     'embedded' => array(
         'file' => 'embedded.php',
-        'regions' => array(),
-        'options' => array('nofooter'=>true, 'nonavbar'=>true, 'nocustommenu'=>true),
+        'regions' => array()
     ),
     // Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
     // This must not have any blocks, and it is good idea if it does not have links to
@@ -119,8 +118,7 @@ $THEME->layouts = array(
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(
         'file' => 'embedded.php',
-        'regions' => array(),
-        'options' => array('nofooter'=>true, 'nonavbar'=>true, 'nocustommenu'=>true),
+        'regions' => array()
     ),
     // The pagelayout used for reports
     'report' => array(
@@ -130,8 +128,6 @@ $THEME->layouts = array(
     ),
 );
 
-
 $THEME->enable_dock = true;
-
 
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
